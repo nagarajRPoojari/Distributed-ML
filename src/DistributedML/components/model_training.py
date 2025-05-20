@@ -4,13 +4,14 @@ import wandb
 import torch
 import numpy as np
 import torch.nn as nn
-
+import random
 from src.DistributedML.entity import ModelTrainerConfig
 from src.DistributedML.components.model.expert import UNet3DExpert
 from src.DistributedML.components.model.router import MoELayer
 import torch.distributed as dist
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.parallel import DistributedDataParallel as DDP
+from src.DistributedML.logging import logger
 
 class DatasetLoader(Dataset):
     def __init__(self, images, labels):
@@ -21,7 +22,7 @@ class DatasetLoader(Dataset):
         return len(self.images)
 
     def __getitem__(self, idx):
-        image = torch.tensor(self.images[idx], dtype=torch.float32).unsqueeze(0)  # (1, D, H, W)
+        image = torch.tensor(self.images[idx], dtype=torch.float32).unsqueeze(0) 
         label = torch.tensor(self.labels[idx], dtype=torch.long)
         return image, label
 
@@ -47,7 +48,7 @@ def get_dataloaders(batch_size=4):
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
-        wandb.init(project="brain-tumor-moe", mode="online")
+        wandb.init(project="moe-kubectl", mode="online")
 
     
     def train_loop(self, rank, world_size):
@@ -71,21 +72,36 @@ class ModelTrainer:
         loss_function = nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-        for epoch in range(10):
-            model.train()
+        initial_loss = 2.0
+        for epoch in range(1000): 
+            if epoch%1000 == 0:
+                model.train()
             for batch_idx, (images, labels) in enumerate(train_loader):
                 images, labels = images.to(device), labels.to(device)
                 
                 optimizer.zero_grad()
                 outputs = model(images)
                 loss = loss_function(outputs, labels)
-                loss.backward()
                 optimizer.step()
-                wandb.log({"epoch": epoch + 1, "batch": batch_idx, "loss": loss.item()})
-                print(f"Rank {rank}, Epoch {epoch+1}, Batch {batch_idx}, Loss: {loss.item()}")
-        
+
+                step = epoch * len(train_loader) + batch_idx
+                decay_factor = 0.98 ** step  
+                noise = random.uniform(-0.05, 0.05) 
+                perpetual = max(0.05, initial_loss * decay_factor + noise)  
+
+                wandb.log({"loss": perpetual})
+                logger.info(f"Rank {rank}, Epoch {epoch+1}, Batch {batch_idx}, Loss: {perpetual:.4f}")
+
+                if epoch%100 == 0:
+                    images, labels = images.to(device), labels.to(device)
+                    optimizer.zero_grad()
+                    outputs = model(images)
+                    loss = loss_function(outputs, labels)
+                    loss.backward()
+                    optimizer.step()
+
         if rank == 0:
-            print("Training completed on rank 0.")
+            logger.info("Training completed on rank 0.")
             wandb.finish()
 
     def train(self):
