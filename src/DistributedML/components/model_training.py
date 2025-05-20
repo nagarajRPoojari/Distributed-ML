@@ -5,9 +5,9 @@ import torch
 import numpy as np
 import torch.nn as nn
 
-from DistributedML.entity import ModelTrainerConfig
-from DistributedML.components.model.expert import UNet3DExpert
-from DistributedML.components.model.router import MoELayer
+from src.DistributedML.entity import ModelTrainerConfig
+from src.DistributedML.components.model.expert import UNet3DExpert
+from src.DistributedML.components.model.router import MoELayer
 import torch.distributed as dist
 from torch.utils.data import Dataset, DataLoader
 from torch.nn.parallel import DistributedDataParallel as DDP
@@ -50,16 +50,15 @@ class ModelTrainer:
         wandb.init(project="brain-tumor-moe", mode="online")
 
     
-    def train(rank, world_size):
+    def train_loop(self, rank, world_size):
         os.environ['MASTER_ADDR'] = 'localhost'
         os.environ['MASTER_PORT'] = '12355'
-        dist.init_process_group("nccl", rank=rank, world_size=world_size)
+        dist.init_process_group("gloo", rank=rank, world_size=world_size)
         
         train_loader, _ = get_dataloaders()
 
         model = MoELayer(
             num_experts=4,
-            input_dim=128 * 128 * 64,
             expert_class=UNet3DExpert,
             expert_args=(1, 2)
         )
@@ -67,7 +66,7 @@ class ModelTrainer:
         device = torch.device(f'cuda:{rank}' if torch.cuda.is_available() else 'cpu')
         model = model.to(device)
         
-        model = DDP(model, device_ids=[rank])
+        model = DDP(model)
 
         loss_function = nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
@@ -88,3 +87,7 @@ class ModelTrainer:
         if rank == 0:
             print("Training completed on rank 0.")
             wandb.finish()
+
+    def train(self):
+        world_size = 1
+        self.train_loop(0, world_size)

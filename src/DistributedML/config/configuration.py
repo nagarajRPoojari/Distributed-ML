@@ -1,6 +1,6 @@
-from DistributedML.constants import *
-from DistributedML.utils.common import read_yaml, create_directories
-from DistributedML.entity import (DataIngestionConfig,
+from src.DistributedML.constants import *
+from src.DistributedML.utils.common import read_yaml, create_directories
+from src.DistributedML.entity import (DataIngestionConfig,
                                    DataValidationConfig,
                                    DataTransformationConfig,
                                    ModelTrainerConfig,

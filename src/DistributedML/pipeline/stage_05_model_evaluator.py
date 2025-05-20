@@ -1,11 +1,11 @@
-from DistributedML.config.configuration import ConfigurationManager
-from DistributedML.components.model_evaluation import ModelEvaluation
-from DistributedML.logging import logger
+from src.DistributedML.config.configuration import ConfigurationManager
+from src.DistributedML.components.model_evaluation import ModelEvaluation
+from src.DistributedML.logging import logger
 
 
 
 
-class ModelEvaluationTrainingPipeline:
+class ModelEvaluationPipeline:
     def __init__(self):
         pass
 

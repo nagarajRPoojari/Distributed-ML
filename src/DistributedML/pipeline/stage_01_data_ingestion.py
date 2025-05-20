@@ -1,9 +1,9 @@
-from DistributedML.config.configuration import ConfigurationManager
-from DistributedML.components.data_ingestion import DataIngestion
-from DistributedML.logging import logger
+from src.DistributedML.config.configuration import ConfigurationManager
+from src.DistributedML.components.data_ingestion import DataIngestion
+from src.DistributedML.logging import logger
 
 
-class DataIngestionTrainingPipeline:
+class DataIngestionPipeline:
     def __init__(self):
         pass
 
@@ -12,4 +12,4 @@ class DataIngestionTrainingPipeline:
         data_ingestion_config = config.get_data_ingestion_config()
         data_ingestion = DataIngestion(config=data_ingestion_config)
         data_ingestion.download_file()
-        data_ingestion.extract_zip_file()
+        # data_ingestion.extract_zip_file()

@@ -1,6 +1,6 @@
 import os
-from DistributedML.logging import logger
-from DistributedML.entity import DataValidationConfig
+from src.DistributedML.logging import logger
+from src.DistributedML.entity import DataValidationConfig
 
 class DataValiadtion:
     def __init__(self, config: DataValidationConfig):

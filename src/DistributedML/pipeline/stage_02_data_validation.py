@@ -1,9 +1,9 @@
-from DistributedML.config.configuration import ConfigurationManager
-from DistributedML.components.data_validation import DataValiadtion
-from DistributedML.logging import logger
+from src.DistributedML.config.configuration import ConfigurationManager
+from src.DistributedML.components.data_validation import DataValiadtion
+from src.DistributedML.logging import logger
 
 
-class DataValidationTrainingPipeline:
+class DataValidationPipeline:
     def __init__(self):
         pass
 

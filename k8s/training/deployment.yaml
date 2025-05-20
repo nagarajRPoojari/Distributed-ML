@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brain-tumor-segmentation
+spec:
+  replicas: 4 
+  selector:
+    matchLabels:
+      app: brain-tumor-segmentation
+  template:
+    metadata:
+      labels:
+        app: brain-tumor-segmentation
+    spec:
+      containers:
+      - name: trainer
+        image: moe:latest
+        env:
+          - name: WANDB_API_KEY
+            value: "d179d52a12c57e77a7406596c409e3dfbda8de19" 
+          - name: MASTER_ADDR
+            value: "localhost" 
+          - name: MASTER_PORT
+            value: "12355" 
+          - name: RANK
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name 
+          - name: WORLD_SIZE
+            value: "4"
+        imagePullPolicy: Never 
+        command: ["python"]
+        args: ["main.py"]
+        resources:
+          requests:
+            cpu: "500m"   # Requesting 0.5 CPU core
+            memory: "1Gi" # Requesting 1 GiB of memory
+          limits:
+            cpu: "1"      # Limiting to 1 CPU core
+            memory: "2Gi" # Limiting to 2 GiB of memory
+
+        volumeMounts:
+        - mountPath: /app/output
+          name: output-vol
+      volumes:
+      - name: output-vol
+        emptyDir: {} 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brain-tumor-segmentation-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: brain-tumor-segmentation

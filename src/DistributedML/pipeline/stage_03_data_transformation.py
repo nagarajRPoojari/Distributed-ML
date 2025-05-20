@@ -1,9 +1,9 @@
-from DistributedML.config.configuration import ConfigurationManager
-from DistributedML.components.data_transformation import DataTransformation
-from DistributedML.logging import logger
+from src.DistributedML.config.configuration import ConfigurationManager
+from src.DistributedML.components.data_transformation import DataTransformation
+from src.DistributedML.logging import logger
 
 
-class DataTransformationTrainingPipeline:
+class DataTransformationPipeline:
     def __init__(self):
         pass
 

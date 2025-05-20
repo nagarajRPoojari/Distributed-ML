@@ -1,0 +1,8 @@
+# .dockerignore
+sample_demo_data/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.env

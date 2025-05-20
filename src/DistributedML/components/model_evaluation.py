@@ -5,10 +5,10 @@ from tqdm import tqdm
 from pathlib import Path
 from urllib.parse import urlparse
 
-from DistributedML.entity import ModelEvaluationConfig
-from DistributedML.components.model.expert import UNet3DExpert
-from DistributedML.components.model.router import MoELayer
-from DistributedML.components.model_training import get_dataloaders
+from src.DistributedML.entity import ModelEvaluationConfig
+from src.DistributedML.components.model.expert import UNet3DExpert
+from src.DistributedML.components.model.router import MoELayer
+from src.DistributedML.components.model_training import get_dataloaders
 import matplotlib.pyplot as plt
 
 

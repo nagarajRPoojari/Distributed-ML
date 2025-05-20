@@ -1,0 +1,437 @@
+[2025-05-20 19:13:50,178: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:13:50,178: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:13:50,179: ERROR: main: yaml file is empty]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/utils/common.py", line 30, in read_yaml
+    return ConfigBox(content)
+  File "box/box.py", line 295, in box.box.Box.__init__
+box.exceptions.BoxValueError: First argument must be mapping or iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 13, in <module>
+    obj.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_01_data_ingestion.py", line 11, in main
+    config = ConfigurationManager()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/config/configuration.py", line 16, in __init__
+    self.config = read_yaml(config_filepath)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/ensure/main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/utils/common.py", line 32, in read_yaml
+    raise ValueError("yaml file is empty")
+ValueError: yaml file is empty
+[2025-05-20 19:14:51,994: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:14:51,995: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:14:51,996: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:14:51,996: INFO: common: created directory at: artifacts]
+[2025-05-20 19:14:51,996: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:14:51,996: ERROR: main: [Errno 2] No such file or directory: 'artifacts/data_ingestion/data.zip']
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 13, in <module>
+    obj.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_01_data_ingestion.py", line 14, in main
+    data_ingestion.download_file()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/data_ingestion.py", line 24, in download_file
+    logger.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/ensure/main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/utils/common.py", line 63, in get_size
+    size_in_kb = round(os.path.getsize(path)/1024)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: 'artifacts/data_ingestion/data.zip'
+[2025-05-20 19:15:58,789: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:15:58,790: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:15:58,791: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:15:58,791: INFO: common: created directory at: artifacts]
+[2025-05-20 19:15:58,791: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:15:58,791: INFO: data_ingestion: File already exists]
+[2025-05-20 19:15:58,791: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:15:58,791: INFO: main: *******************]
+[2025-05-20 19:15:58,791: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:15:58,792: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:15:58,792: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:15:58,792: INFO: common: created directory at: artifacts]
+[2025-05-20 19:15:58,792: ERROR: main: "'ConfigBox' object has no attribute 'model_trainer'"]
+Traceback (most recent call last):
+  File "box/box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'model_trainer'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/box.py", line 633, in box.box.Box.__getattr__
+  File "box/box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'model_trainer'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'model_trainer'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/config_box.py", line 29, in box.config_box.ConfigBox.__getattr__
+  File "box/box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'model_trainer'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 594, in box.box.Box.__getitem__
+KeyError: 'model_trainer'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "box/box.py", line 633, in box.box.Box.__getattr__
+  File "box/box.py", line 621, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'model_trainer'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "box/box.py", line 635, in box.box.Box.__getattr__
+AttributeError: 'ConfigBox' object has no attribute 'model_trainer'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 12, in main
+    model_trainer_config = config.get_model_trainer_config()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/config/configuration.py", line 69, in get_model_trainer_config
+    config = self.config.model_trainer
+  File "box/config_box.py", line 31, in box.config_box.ConfigBox.__getattr__
+  File "box/box.py", line 649, in box.box.Box.__getattr__
+box.exceptions.BoxKeyError: "'ConfigBox' object has no attribute 'model_trainer'"
+[2025-05-20 19:19:27,487: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:19:27,489: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:19:27,490: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:19:27,490: INFO: common: created directory at: artifacts]
+[2025-05-20 19:19:27,490: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:19:27,490: INFO: data_ingestion: File already exists]
+[2025-05-20 19:19:27,490: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:19:27,490: INFO: main: *******************]
+[2025-05-20 19:19:27,490: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:19:27,492: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:19:27,492: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:19:27,492: INFO: common: created directory at: artifacts]
+[2025-05-20 19:19:27,492: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:19:30,921: ERROR: main: train() missing 1 required positional argument: 'world_size']
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+TypeError: train() missing 1 required positional argument: 'world_size'
+[2025-05-20 19:20:36,753: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:20:36,755: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:20:36,756: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:20:36,756: INFO: common: created directory at: artifacts]
+[2025-05-20 19:20:36,756: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:20:36,756: INFO: data_ingestion: File already exists]
+[2025-05-20 19:20:36,756: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:20:36,756: INFO: main: *******************]
+[2025-05-20 19:20:36,756: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:20:36,758: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:20:36,758: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:20:36,758: INFO: common: created directory at: artifacts]
+[2025-05-20 19:20:36,758: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:20:38,504: ERROR: main: train() takes 1 positional argument but 3 were given]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 95, in train
+    self.train(rank, world_size)
+TypeError: train() takes 1 positional argument but 3 were given
+[2025-05-20 19:20:54,177: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:20:54,179: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:20:54,180: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:20:54,180: INFO: common: created directory at: artifacts]
+[2025-05-20 19:20:54,180: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:20:54,180: INFO: data_ingestion: File already exists]
+[2025-05-20 19:20:54,180: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:20:54,180: INFO: main: *******************]
+[2025-05-20 19:20:54,180: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:20:54,181: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:20:54,182: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:20:54,182: INFO: common: created directory at: artifacts]
+[2025-05-20 19:20:54,182: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:20:55,902: ERROR: main: train() takes 1 positional argument but 3 were given]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 95, in train
+    self.train(rank, world_size)
+TypeError: train() takes 1 positional argument but 3 were given
+[2025-05-20 19:21:11,266: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:21:11,267: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:21:11,268: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:21:11,268: INFO: common: created directory at: artifacts]
+[2025-05-20 19:21:11,268: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:21:11,268: INFO: data_ingestion: File already exists]
+[2025-05-20 19:21:11,268: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:21:11,268: INFO: main: *******************]
+[2025-05-20 19:21:11,268: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:21:11,270: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:21:11,270: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:21:11,270: INFO: common: created directory at: artifacts]
+[2025-05-20 19:21:11,270: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:24:32,433: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:24:32,435: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:24:32,436: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:24:32,436: INFO: common: created directory at: artifacts]
+[2025-05-20 19:24:32,436: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:24:32,436: INFO: data_ingestion: File already exists]
+[2025-05-20 19:24:32,436: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:24:32,436: INFO: main: *******************]
+[2025-05-20 19:24:32,436: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:24:32,437: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:24:32,438: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:24:32,438: INFO: common: created directory at: artifacts]
+[2025-05-20 19:24:32,438: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:24:34,152: ERROR: main: Address already in use]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 96, in train
+    self.train_loop(rank, world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 56, in train_loop
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 576, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 229, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 157, in _create_c10d_store
+    return TCPStore(
+RuntimeError: Address already in use
+[2025-05-20 19:26:37,741: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:26:37,744: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:26:37,745: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:26:37,745: INFO: common: created directory at: artifacts]
+[2025-05-20 19:26:37,745: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:26:37,745: INFO: data_ingestion: File already exists]
+[2025-05-20 19:26:37,745: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:26:37,745: INFO: main: *******************]
+[2025-05-20 19:26:37,745: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:26:37,746: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:26:37,747: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:26:37,747: INFO: common: created directory at: artifacts]
+[2025-05-20 19:26:37,747: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:26:39,497: ERROR: main: Address already in use]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 96, in train
+    self.train_loop(rank, world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 56, in train_loop
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 576, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 229, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 157, in _create_c10d_store
+    return TCPStore(
+RuntimeError: Address already in use
+[2025-05-20 19:29:09,183: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:29:09,185: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:29:09,186: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:29:09,186: INFO: common: created directory at: artifacts]
+[2025-05-20 19:29:09,186: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:29:09,186: INFO: data_ingestion: File already exists]
+[2025-05-20 19:29:09,186: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:29:09,186: INFO: main: *******************]
+[2025-05-20 19:29:09,186: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:29:09,188: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:29:09,188: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:29:09,188: INFO: common: created directory at: artifacts]
+[2025-05-20 19:29:09,188: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:29:10,327: ERROR: main: Address already in use]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 96, in train
+    self.train_loop(rank, world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 56, in train_loop
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 576, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 229, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 157, in _create_c10d_store
+    return TCPStore(
+RuntimeError: Address already in use
+[2025-05-20 19:30:03,840: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:30:03,842: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:30:03,842: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:30:03,842: INFO: common: created directory at: artifacts]
+[2025-05-20 19:30:03,842: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:30:03,842: INFO: data_ingestion: File already exists]
+[2025-05-20 19:30:03,843: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:30:03,843: INFO: main: *******************]
+[2025-05-20 19:30:03,843: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:30:03,844: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:30:03,845: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:30:03,845: INFO: common: created directory at: artifacts]
+[2025-05-20 19:30:03,845: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:32:00,378: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:32:00,380: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:32:00,381: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:32:00,381: INFO: common: created directory at: artifacts]
+[2025-05-20 19:32:00,381: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:32:00,381: INFO: data_ingestion: File already exists]
+[2025-05-20 19:32:00,381: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:32:00,381: INFO: main: *******************]
+[2025-05-20 19:32:00,381: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:32:00,383: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:32:00,383: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:32:00,383: INFO: common: created directory at: artifacts]
+[2025-05-20 19:32:00,383: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:33:07,424: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:33:07,426: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:33:07,426: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:33:07,426: INFO: common: created directory at: artifacts]
+[2025-05-20 19:33:07,426: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:33:07,426: INFO: data_ingestion: File already exists]
+[2025-05-20 19:33:07,427: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:33:07,427: INFO: main: *******************]
+[2025-05-20 19:33:07,427: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:33:07,428: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:33:07,429: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:33:07,429: INFO: common: created directory at: artifacts]
+[2025-05-20 19:33:07,429: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:33:40,362: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:33:40,364: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:33:40,365: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:33:40,365: INFO: common: created directory at: artifacts]
+[2025-05-20 19:33:40,365: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:33:40,365: INFO: data_ingestion: File already exists]
+[2025-05-20 19:33:40,365: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:33:40,365: INFO: main: *******************]
+[2025-05-20 19:33:40,365: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:33:40,367: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:33:40,367: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:33:40,367: INFO: common: created directory at: artifacts]
+[2025-05-20 19:33:40,367: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:34:11,901: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:34:11,903: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:34:11,903: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:34:11,904: INFO: common: created directory at: artifacts]
+[2025-05-20 19:34:11,904: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:34:11,904: INFO: data_ingestion: File already exists]
+[2025-05-20 19:34:11,904: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:34:11,904: INFO: main: *******************]
+[2025-05-20 19:34:11,904: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:34:11,905: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:34:11,906: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:34:11,906: INFO: common: created directory at: artifacts]
+[2025-05-20 19:34:11,906: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:34:13,036: ERROR: main: Address already in use]
+Traceback (most recent call last):
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/main.py", line 38, in <module>
+    model_trainer.main()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/pipeline/stage_04_model_trainer.py", line 14, in main
+    model_trainer_config.train()
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 106, in train
+    self.train_loop(rank, world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/distributed/Distributed-ML/src/DistributedML/components/model_training.py", line 57, in train_loop
+    dist.init_process_group("nccl", rank=rank, world_size=world_size)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 576, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 229, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout)
+  File "/Users/nagarajpoojari/Desktop/agentic/Distributed-MoE/.venv/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 157, in _create_c10d_store
+    return TCPStore(
+RuntimeError: Address already in use
+[2025-05-20 19:36:28,577: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:36:28,579: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:36:28,580: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:36:28,580: INFO: common: created directory at: artifacts]
+[2025-05-20 19:36:28,580: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:36:28,580: INFO: data_ingestion: File already exists]
+[2025-05-20 19:36:28,580: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:36:28,580: INFO: main: *******************]
+[2025-05-20 19:36:28,580: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:36:28,582: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:36:28,582: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:36:28,582: INFO: common: created directory at: artifacts]
+[2025-05-20 19:36:28,582: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 19:41:27,449: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 19:41:27,450: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:41:27,451: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:41:27,451: INFO: common: created directory at: artifacts]
+[2025-05-20 19:41:27,451: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 19:41:27,451: INFO: data_ingestion: File already exists]
+[2025-05-20 19:41:27,452: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 19:41:27,452: INFO: main: *******************]
+[2025-05-20 19:41:27,452: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 19:41:27,453: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 19:41:27,454: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 19:41:27,454: INFO: common: created directory at: artifacts]
+[2025-05-20 19:41:27,454: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 20:38:40,843: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2025-05-20 20:38:40,845: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 20:38:40,846: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 20:38:40,846: INFO: common: created directory at: artifacts]
+[2025-05-20 20:38:40,846: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-05-20 20:38:40,846: INFO: data_ingestion: File already exists]
+[2025-05-20 20:38:40,846: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2025-05-20 20:38:40,846: INFO: main: *******************]
+[2025-05-20 20:38:40,846: INFO: main: >>>>>> stage Training started <<<<<<]
+[2025-05-20 20:38:40,848: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-05-20 20:38:40,849: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-05-20 20:38:40,849: INFO: common: created directory at: artifacts]
+[2025-05-20 20:38:40,849: INFO: common: created directory at: artifacts/model_trainer]
+[2025-05-20 20:38:47,159: INFO: distributed_c10d: Added key: store_based_barrier_key:1 to store for rank: 0]
+[2025-05-20 20:38:47,161: INFO: distributed_c10d: Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.]
+[2025-05-20 20:38:47,832: INFO: distributed: Reducer buckets have been rebuilt in this iteration.]
+[2025-05-20 20:39:16,048: INFO: main: >>>>>> stage Training completed <<<<<<
+
+x==========x]

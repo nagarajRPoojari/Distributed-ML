@@ -1,9 +1,9 @@
-from DistributedML.config.configuration import ConfigurationManager
-from DistributedML.components.model_training import ModelTrainer
-from DistributedML.logging import logger
+from src.DistributedML.config.configuration import ConfigurationManager
+from src.DistributedML.components.model_training import ModelTrainer
+from src.DistributedML.logging import logger
 
 
-class ModelTrainerTrainingPipeline:
+class ModelTrainerPipeline:
     def __init__(self):
         pass
 

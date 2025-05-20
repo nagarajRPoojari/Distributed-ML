@@ -8,4 +8,9 @@ Pillow==9.5.0
 scikit_learn==1.2.2
 streamlit==1.22.0
 tensorflow==2.10.1
+python-box
+pandas
+pyYAML
+ensure
+
 -e .
