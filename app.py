@@ -38,23 +38,23 @@ def predict_for(flair, t2, t1ce, model):
 
 
 def random_predictor(model):
-    p = "sample_demo_data"
+    p = "db"
     li = os.listdir(path=p)
     n = random.randint(0, len(li) - 1)
-    flair = np.load(f"sample_demo_data/{li[n]}/flair.np.npy")
-    t2 = np.load(f"sample_demo_data/{li[n]}/t2.np.npy")
-    t1ce = np.load(f"sample_demo_data/{li[n]}/t1ce.np.npy")
+    flair = np.load(f"db/{li[n]}/flair.np.npy")
+    t2 = np.load(f"db/{li[n]}/t2.np.npy")
+    t1ce = np.load(f"db/{li[n]}/t1ce.np.npy")
 
     res, flair_2 = predict_for(flair, t2, t1ce, model)
 
     return res, flair, t2, t1ce, flair_2
 
 
-model = load_model("unet3d_0.h5", compile=False)
+model = load_model("moe.h5", compile=False)
 
 
 @st.cache_data
-def get_model(path="unet3d_0.h5", compile=False):
+def get_model(path="moe.h5", compile=False):
     return load_model(path, compile)
 
 

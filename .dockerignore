@@ -1,5 +1,4 @@
 # .dockerignore
-sample_demo_data/
 __pycache__/
 *.pyc
 *.pyo

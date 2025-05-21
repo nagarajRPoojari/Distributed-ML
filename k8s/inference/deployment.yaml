@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: brain-tumor-segmentation
 spec:
-  replicas: 4 
+  replicas: 1 
   selector:
     matchLabels:
       app: brain-tumor-segmentation
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: trainer
-        image: moe:latest
+        image: moe-inference:latest
         env:
           - name: WANDB_API_KEY
             value: "d179d52a12c57e77a7406596c409e3dfbda8de19" 
@@ -33,12 +33,13 @@ spec:
         args: ["run", "app.py"]
         resources:
           requests:
-            cpu: "500m" 
-            memory: "1Gi"
+            cpu: "1000m" 
+            memory: "2Gi"
           limits:
-            cpu: "1"      
-            memory: "2Gi" 
-
+            cpu: "2"
+            memory: "4Gi"
+        ports:
+          - containerPort: 8501
         volumeMounts:
         - mountPath: /app/output
           name: output-vol
@@ -52,8 +53,10 @@ kind: Service
 metadata:
   name: brain-tumor-segmentation-service
 spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
+  type: NodePort
   selector:
     app: brain-tumor-segmentation
+  ports:
+    - port: 80           # Exposed externally
+      targetPort: 8501   # Container port Streamlit listens to
+      nodePort: 30001 
