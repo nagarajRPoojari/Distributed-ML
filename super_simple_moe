@@ -1,0 +1,58 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	5219866960 [label="
+ (1, 2, 8, 8, 8)" fillcolor=darkolivegreen1]
+	5218760976 [label=MeanBackward1]
+	5218760688 -> 5218760976
+	5218760688 [label=StackBackward0]
+	5218760832 -> 5218760688
+	5218760832 [label=ConvolutionBackward0]
+	5218760352 -> 5218760832
+	5219866000 [label="experts.0.conv.weight
+ (2, 1, 3, 3, 3)" fillcolor=lightblue]
+	5219866000 -> 5218760352
+	5218760352 [label=AccumulateGrad]
+	5218760544 -> 5218760832
+	5219866080 [label="experts.0.conv.bias
+ (2)" fillcolor=lightblue]
+	5219866080 -> 5218760544
+	5218760544 [label=AccumulateGrad]
+	5218760640 -> 5218760688
+	5218760640 [label=ConvolutionBackward0]
+	5218760256 -> 5218760640
+	5219866160 [label="experts.1.conv.weight
+ (2, 1, 3, 3, 3)" fillcolor=lightblue]
+	5219866160 -> 5218760256
+	5218760256 [label=AccumulateGrad]
+	5218760304 -> 5218760640
+	5219866240 [label="experts.1.conv.bias
+ (2)" fillcolor=lightblue]
+	5219866240 -> 5218760304
+	5218760304 [label=AccumulateGrad]
+	5218760736 -> 5218760688
+	5218760736 [label=ConvolutionBackward0]
+	5218760160 -> 5218760736
+	5219866320 [label="experts.2.conv.weight
+ (2, 1, 3, 3, 3)" fillcolor=lightblue]
+	5219866320 -> 5218760160
+	5218760160 [label=AccumulateGrad]
+	5218760208 -> 5218760736
+	5219866400 [label="experts.2.conv.bias
+ (2)" fillcolor=lightblue]
+	5219866400 -> 5218760208
+	5218760208 [label=AccumulateGrad]
+	5218761024 -> 5218760688
+	5218761024 [label=ConvolutionBackward0]
+	5218760064 -> 5218761024
+	5219866480 [label="experts.3.conv.weight
+ (2, 1, 3, 3, 3)" fillcolor=lightblue]
+	5219866480 -> 5218760064
+	5218760064 [label=AccumulateGrad]
+	5218760112 -> 5218761024
+	5219866560 [label="experts.3.conv.bias
+ (2)" fillcolor=lightblue]
+	5219866560 -> 5218760112
+	5218760112 [label=AccumulateGrad]
+	5218760976 -> 5219866960
+}

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: trainer
-        image: moe-inference:latest
+        image: 539561423665.dkr.ecr.us-west-2.amazonaws.com/moe-app:latest
         env:
           - name: WANDB_API_KEY
             value: "d179d52a12c57e77a7406596c409e3dfbda8de19" 
@@ -33,7 +33,7 @@ spec:
         args: ["run", "app.py"]
         resources:
           requests:
-            cpu: "1000m" 
+            cpu: "1"
             memory: "2Gi"
           limits:
             cpu: "2"
@@ -60,3 +60,15 @@ spec:
     - port: 80          
       targetPort: 8501  
       nodePort: 30001 
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: moe-app-service
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: brain-tumor-segmentation
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80
