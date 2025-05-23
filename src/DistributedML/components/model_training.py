@@ -48,8 +48,7 @@ def get_dataloaders(batch_size=4):
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
-        wandb.init(project="moe-kubectl", mode="online")
-
+        wandb.init(project=os.environ['WANDB_CLUSTER_NAME'], mode="online")
     
     def train_loop(self, rank, world_size):
         os.environ['MASTER_ADDR'] = 'localhost'
@@ -73,7 +72,7 @@ class ModelTrainer:
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
         initial_loss = 2.0
-        for epoch in range(1000): 
+        for epoch in range(10000): 
             if epoch%1000 == 0:
                 model.train()
             for batch_idx, (images, labels) in enumerate(train_loader):
@@ -92,7 +91,7 @@ class ModelTrainer:
                 wandb.log({"loss": perpetual})
                 logger.info(f"Rank {rank}, Epoch {epoch+1}, Batch {batch_idx}, Loss: {perpetual:.4f}")
 
-                if epoch%100 == 0:
+                if epoch%1000 == 0:
                     images, labels = images.to(device), labels.to(device)
                     optimizer.zero_grad()
                     outputs = model(images)

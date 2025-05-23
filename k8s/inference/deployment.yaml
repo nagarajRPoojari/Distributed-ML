@@ -57,6 +57,6 @@ spec:
   selector:
     app: brain-tumor-segmentation
   ports:
-    - port: 80           # Exposed externally
-      targetPort: 8501   # Container port Streamlit listens to
+    - port: 80          
+      targetPort: 8501  
       nodePort: 30001 

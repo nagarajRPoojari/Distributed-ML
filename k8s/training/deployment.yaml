@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
       - name: trainer
-        image: moe:latest
+        image: moe-training:latest
         env:
+          - name: WANDB_CLUSTER_NAME
+            value: "Training_1"
           - name: WANDB_API_KEY
             value: "d179d52a12c57e77a7406596c409e3dfbda8de19" 
           - name: MASTER_ADDR
